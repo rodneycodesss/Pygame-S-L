@@ -1,14 +1,6 @@
-"""
-Snakes and Ladders Game
-----------------------
-A Python implementation of the classic board game for 2-4 players.
-"""
-
-__version__ = "1.0.0"
-
 import random
 
-# Function to roll the dice and display the result
+# roll the dice and display the result
 def dice_roll():
     """
     Simulate rolling a six-sided dice and return the result (1-6).
@@ -17,7 +9,7 @@ def dice_roll():
     print(f"You rolled a {value}.")
     return value
 
-# Function to check for snakes or ladders and return the new position
+# check for snakes or ladders and return the new position
 def snake_ladder_check(position):
     """
     Check if the position is at the base of a ladder or the head of a snake.
@@ -40,7 +32,7 @@ def snake_ladder_check(position):
     else:
         return position
 
-# Function to calculate the new position after a dice roll
+# get the new position after a dice roll
 def get_position(player, current_pos, dice_value):
     """
     Calculate the new position for the player after rolling the dice.
@@ -48,13 +40,13 @@ def get_position(player, current_pos, dice_value):
     """
     next_pos = current_pos + dice_value
     if next_pos > 100:
-        # Bounce back if overshooting 100
+        # Bounce back if overshooting the 100th position
         bounce = next_pos - 100
         next_pos = 100 - bounce
         print(f"{player} needs exact roll to finish. Bounced back to {next_pos}.")
     return next_pos
 
-# Function to display the current board status
+# display function for the current board status of all players
 def display_board_status(players_dict):
     """
     Display the current positions of all players.
@@ -64,7 +56,7 @@ def display_board_status(players_dict):
         print(f"  {player}: {pos}")
     print()
 
-# Main game loop
+# Main game loop structure for each player
 def play_game():
     """
     Main function to play the Snakes and Ladders game.
@@ -83,7 +75,7 @@ Game Rules:
 - Enjoy the game!
 ========================================
 """)
-    # Player registration
+    # Player registration and name input
     while True:
         try:
             num_players = int(input("Enter number of players (2-4): "))
@@ -108,7 +100,7 @@ Game Rules:
     for player in players_dict:
         print(f"- {player}")
     print()
-    # Game loop
+    # Game looping structure for each player
     winner = None
     while not winner:
         for player in players_dict:
@@ -117,7 +109,7 @@ Game Rules:
             current_pos = players_dict[player]
             print(f"{player} is at position {current_pos}.")
             new_pos = get_position(player, current_pos, dice_value)
-            # Check for snakes or ladders
+            # Check for snakes or ladder
             final_pos = snake_ladder_check(new_pos)
             players_dict[player] = final_pos
             print(f"{player} moved to position {final_pos}.")
