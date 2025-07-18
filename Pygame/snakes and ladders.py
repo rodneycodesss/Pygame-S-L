@@ -1,3 +1,11 @@
+"""
+Snakes and Ladders Game
+----------------------
+A Python implementation of the classic board game for 2-4 players.
+"""
+
+__version__ = "1.0.0"
+
 import random
 
 # Function to roll the dice and display the result
